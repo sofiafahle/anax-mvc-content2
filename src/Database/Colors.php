@@ -6,9 +6,8 @@ namespace Anax\Database;
  * Class with table for testing CDatabaseModel
  *
  */
-class Colors extends CDatabaseModel implements \Anax\DI\IInjectionAware
+class Colors extends CDatabaseModel
 {
-	use \Anax\DI\TInjectable;
 	
 	public function init()
 	{
