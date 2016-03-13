@@ -21,7 +21,7 @@ class CDatabaseModelTest extends \PHPUnit_Framework_TestCase implements \Anax\DI
     public static function setUpBeforeClass()
     {
 		
-		$di = new Anax\DI\CDIFactoryDefault();
+		$di = new \Anax\DI\CDIFactoryDefault();
 		
 		$di->setShared('db', function() {
 			$db = new \Mos\Database\CDatabaseBasic();
