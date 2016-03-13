@@ -6,7 +6,7 @@ namespace Anax\Database;
  * Tests for base class for database models
  *
  */
-class CDatabaseModelTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInjectionAware
+class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInjectionAware
 {
 	use \Anax\DI\TInjectable;
 	

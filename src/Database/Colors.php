@@ -11,7 +11,7 @@ class Colors extends CDatabaseModel
 	
 	private $db;
 	
-	private function init()
+	public function init()
 	{
 		
 		$this->db->dropTableIfExists("test");
