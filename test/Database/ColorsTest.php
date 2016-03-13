@@ -21,7 +21,7 @@ class CDatabaseModelTest extends \PHPUnit_Framework_TestCase implements \Anax\DI
     public static function setUpBeforeClass()
     {
 		
-		self::$colors = new Anax\Database\Colors();
+		self::$colors = new Colors();
 		self::$colors->setDI($di);
 		self::$color->init();
 		
