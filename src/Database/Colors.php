@@ -10,6 +10,11 @@ class Colors extends CDatabaseModel
 {
 	use \Anax\DI\TInjectable;
 	
+	/**
+	 *	@property $db Database connection
+	 *
+	 */
+	
 	public function init()
 	{
 		
