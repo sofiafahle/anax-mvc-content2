@@ -23,7 +23,7 @@ class CDatabaseModelTest extends \PHPUnit_Framework_TestCase implements \Anax\DI
 		$di = new Anax\DI\CDIFactoryDefault();
 		
 		$di->setShared('db', function() {
-			$db = new \CRssFeed\Database\CDatabaseBasic();
+			$db = new \Mos\Database\CDatabaseBasic();
 			$db->setOptions(['dsn' => "sqlite:memory::", "verbose" => false]);
 			$db->connect();
 			return $db;
