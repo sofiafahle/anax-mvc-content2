@@ -8,8 +8,7 @@ namespace Anax\Database;
  */
 class Colors extends CDatabaseModel
 {
-	
-	private $db;
+	use \Anax\DI\TInjectable;
 	
 	public function init()
 	{
