@@ -6,11 +6,21 @@ namespace Anax\Database;
  * Class with table for testing CDatabaseModel
  *
  */
-class Colors extends CDatabaseModel
+class Colors extends CDatabaseModel implements \Anax\DI\IInjectionAware
 {
+	use \Anax\DI\TInjectable;
 	
 	public function init()
 	{
+		$di = new Anax\DI\CDIFactoryDefault();
+		
+		$di->setShared('db', function() {
+			$db = new \Mos\Database\CDatabaseBasic();
+			$db->setOptions(['dsn' => "sqlite:memory::", "verbose" => false]);
+			$db->connect();
+			return $db;
+		});
+		
 		$this->db->dropTableIfExists("test");
 		$this->db->execute();
 		$this->db->createTable(
