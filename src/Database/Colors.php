@@ -12,13 +12,6 @@ class Colors extends CDatabaseModel
 	public function init()
 	{
 		
-		$di->setShared('db', function() {
-			$db = new \Mos\Database\CDatabaseBasic();
-			$db->setOptions(['dsn' => "sqlite:memory::", "verbose" => false]);
-			$db->connect();
-			return $db;
-		});
-		
 		$this->db->dropTableIfExists("test");
 		$this->db->execute();
 		$this->db->createTable(

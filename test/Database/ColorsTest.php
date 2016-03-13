@@ -21,6 +21,15 @@ class CDatabaseModelTest extends \PHPUnit_Framework_TestCase implements \Anax\DI
     public static function setUpBeforeClass()
     {
 		
+		$di = new Anax\DI\CDIFactoryDefault();
+		
+		$di->setShared('db', function() {
+			$db = new \Mos\Database\CDatabaseBasic();
+			$db->setOptions(['dsn' => "sqlite:memory::", "verbose" => false]);
+			$db->connect();
+			return $db;
+		});
+		
 		self::$colors = new Colors();
 		self::$colors->setDI($di);
 		self::$color->init();
