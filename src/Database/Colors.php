@@ -11,7 +11,6 @@ class Colors extends CDatabaseModel
 	
 	public function init()
 	{
-		$di = new Anax\DI\CDIFactoryDefault();
 		
 		$di->setShared('db', function() {
 			$db = new \Mos\Database\CDatabaseBasic();
