@@ -32,7 +32,7 @@ class CDatabaseModelTest extends \PHPUnit_Framework_TestCase implements \Anax\DI
 		
 		self::$colors = new Colors();
 		self::$colors->setDI($di);
-		self::$color->init();
+		self::$colors->init();
 		
 	}
 	
