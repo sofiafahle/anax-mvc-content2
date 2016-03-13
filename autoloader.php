@@ -1,38 +1,31 @@
 <?php
 /**
- * An example of a project-specific implementation.
+ * Enable autoloaders.
  *
- * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
- * from /path/to/project/src/Baz/Qux.php:
- *
- *      new \Foo\Bar\Baz\Qux;
- *
- * @param string $class The fully-qualified class name.
- * @return void
  */
-spl_autoload_register(
-    function ($class) {
-        // project-specific namespace prefix
-        //$prefix = 'Foo\\Bar\\';
-        $prefix = 'Jovis\\';
-        // base directory for the namespace prefix
-        $base_dir = __DIR__ . '/src/';
-        // does the class use the namespace prefix?
-        $len = strlen($prefix);
-        if (strncmp($prefix, $class, $len) !== 0) {
-            // no, move to the next registered autoloader
-            return;
-        }
-        // get the relative class name
-        $relative_class = substr($class, $len);
-        // replace the namespace prefix with the base directory, replace namespace
-        // separators with directory separators in the relative class name, append
-        // with .php
-        $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
-        // if the file exists, require it
-        if (file_exists($file)) {
-            include $file;
-        }
-    }
-);
+
+
+/**
+ * Default Anax autoloader, and the add specifics through a self invoking anonomous function.
+ * Add autoloader for namespace Anax and a default directory for unknown vendor namespaces.
+ */
+require ANAX_INSTALL_PATH . 'src/Loader/CPsr4Autoloader.php';
+
+call_user_func(function () {
+    $loader = new \Anax\Loader\CPsr4Autoloader();
+    $loader->addNameSpace('Anax', ANAX_INSTALL_PATH . 'src')
+           ->addNameSpace('', ANAX_APP_PATH . 'src')
+           ->addNameSpace('Michelf', ANAX_INSTALL_PATH . '3pp/php-markdown/Michelf')
+           ->register();
+});
+
+
+
+/**
+ * Including composer autoloader if available.
+ *
+ * @link https://getcomposer.org/doc/01-basic-usage.md#autoloading
+ */
+if (is_file(ANAX_INSTALL_PATH . 'vendor/autoload.php')) {
+    include ANAX_INSTALL_PATH . 'vendor/autoload.php';
+}
