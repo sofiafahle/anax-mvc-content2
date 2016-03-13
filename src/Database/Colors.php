@@ -9,7 +9,9 @@ namespace Anax\Database;
 class Colors extends CDatabaseModel
 {
 	
-	public function init()
+	private $db;
+	
+	private function init()
 	{
 		
 		$this->db->dropTableIfExists("test");
