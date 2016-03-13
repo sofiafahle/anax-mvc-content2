@@ -5,15 +5,14 @@ namespace Anax\Database;
 /**
  * Class with table for testing CDatabaseModel
  *
+ *	@property $db Database connection
+ *
  */
 class Colors extends CDatabaseModel
 {
 	use \Anax\DI\TInjectable;
 	
-	/**
-	 *	@property $db Database connection
-	 *
-	 */
+	
 	
 	public function init()
 	{
