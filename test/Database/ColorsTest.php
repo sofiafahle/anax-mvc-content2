@@ -50,8 +50,11 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	{
 		// Id = 1
 		$res = self::$colors->find(1);
+	 	$res = $res['name'];
+		$exp = 'Sofia';
 	 
-		
+	 
+		$this->assertTrue($res, $exp, "Name missmatch.");
 	}
 	
 	
@@ -63,9 +66,10 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	public function testFindAll()
 	{
 		$res = self::$colors->getSource();
-		$exp = 2;
+		$res = count($res);
+		$exp = 3;
 		
-		$this->assertEquals(count($res), $exp, "Row count missmatch.");
+		$this->assertEquals($res, $exp, "Row count missmatch.");
 	}
 	
 	/**
