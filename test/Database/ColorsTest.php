@@ -50,7 +50,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	{
 		// Id = 1
 		$res = self::$colors->find(1);
-	 	$res = $res['name'];
+	 	$res = $res->name;
 		$exp = 'Sofia';
 	 
 	 
