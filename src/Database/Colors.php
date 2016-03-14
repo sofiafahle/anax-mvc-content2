@@ -34,6 +34,7 @@ class Colors extends CDatabaseModel
 		);
 		$this->db->execute(['Sofia', 'Red']);
 		$this->db->execute(['Olle', 'Blue']);
+		$this->db->execute(['Pia', 'Green']);
 		
 		
         /*

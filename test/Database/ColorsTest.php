@@ -76,11 +76,11 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return array
 	 */
-	public function findWhere() {
+	public function testFindWhere() {
 		$res = self::$colors->findWhere('color', 'Red');
 		$exp = 'Sofia';
 		
-		$this->assertEquals($res[0]->name, $exp, "Row count missmatch.");
+		$this->assertEquals($res[0]->name, $exp, "Name missmatch.");
 	}
 	
 	/**
@@ -91,14 +91,11 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return array
 	 */
-	public function findAllOrder($column, $order) {
-		$this->db->select()
-				 ->from($this->getSource())
-				 ->orderBy($column . ' ' . $order);
+	public function testFindAllOrder() {
+		$res = self::$colors->findAllOrder('color', 'ASC');
+		$exp = 'Blue';
 		
-		$this->db->execute();
-		$this->db->setFetchModeClass(__CLASS__);
-		return $this->db->fetchAll();
+		$this->assertEquals($res[0]->color, $exp, "Color missmatch.");
 	}
 	
 	/**
