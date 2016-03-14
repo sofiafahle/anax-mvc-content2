@@ -48,7 +48,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 
 	public function testFind()
 	{
-		$resA = self::$colors->find(1);	
+		$res = self::$colors->find(1);	
 		
 		$res2 = array();
 		foreach($res as $key => $val){
@@ -132,7 +132,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return void
 	 */
-	public function testSetProperties($properties)
+	public function testSetProperties()
 	{
 		$array = array('id' => 2, 'number' => 5, 'name' => 'test');
 		self::$colors->setProperties($array);
