@@ -277,11 +277,14 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 */
 	public function testQuery()
 	{
-		$res = self::$colors->query('id');
+		$res = self::$colors->query('id')
+					 ->where('color = "Red"')
+					 ->andWhere('name = "Sofia"')
+					 ->execute();
 		
 	 	$res2 = array();
 		foreach($res as $key => $val){
-			$res2[$val] = $val[0];
+			$res2[$val] = $val->id;
 		}
 		
 		$res = $res2['id'];
