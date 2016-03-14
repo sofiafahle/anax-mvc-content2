@@ -29,7 +29,7 @@ class Colors extends CDatabaseModel
 		);
 		$this->db->execute();
 		$this->db->insert(
-			'test',
+			'colors',
 			['name', 'color']
 		);
 		$this->db->execute(['Sofia', 'Red']);
@@ -39,7 +39,7 @@ class Colors extends CDatabaseModel
 		
         /*
         $this->db->select("*")
-            ->from("test")
+            ->from("colors")
         ;
         var_dump($this->db->executeFetchAll());
         */
