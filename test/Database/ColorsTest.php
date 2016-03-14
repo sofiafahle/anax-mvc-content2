@@ -282,9 +282,10 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 					 ->andWhere('name = "Sofia"')
 					 ->execute();
 		
+		$res = $res[0];
 		$exp =  '1';
 		
-		$this->assertEquals($exp, $res, "ID missmatch.");
+		$this->assertEquals($res, $exp, "ID missmatch.");
 	}
 	
 	/**
