@@ -50,8 +50,10 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	{
 		// Id = 1
 		$res = self::$colors->find(1);
-		$res->setDI($di);
-	 	$res = $res->name;
+	 	foreach($res as $key => $value){
+			$res[$key] = $value;
+		}
+		$res = $res['name'];
 		$exp = 'Sofia';
 	 
 	 
