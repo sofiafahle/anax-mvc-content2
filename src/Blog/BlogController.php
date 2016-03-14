@@ -68,6 +68,11 @@ class BlogController implements \Anax\DI\IInjectionAware
 	public function viewAction($slug = null)
 	{
 		$blog = $this->blog->findWhere('slug', $slug);
+		
+		if (empty($blog)) {
+			die('No such post!');
+		}
+		
 		$post = $blog[0];	 
 	 
 		$this->theme->setTitle("View post with id");

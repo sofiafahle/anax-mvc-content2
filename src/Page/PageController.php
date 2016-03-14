@@ -64,7 +64,7 @@ class PageController implements \Anax\DI\IInjectionAware
 	{
 		$pages = $this->page->findWhere('slug', $slug);
 		
-		if (!$pages) {
+		if (empty($pages)) {
 			die('No such page!');
 		}
 		
