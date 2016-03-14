@@ -117,8 +117,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		
 		self::$colors->setProperties($array);
 		$res = self::$colors->getProperties();
-		
-		unset($array['id']);
+
 		$exp = $array;
 		
 		
