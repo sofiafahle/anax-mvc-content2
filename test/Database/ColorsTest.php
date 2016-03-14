@@ -180,8 +180,8 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 
 		$this->assertTrue($res, "Create failed.");
 		
-		// Find by lastInsertID
-		$res = self::$colors->find(self::$colors->id);
+		// Test insertion
+		$res = self::$colors->find(4);
 		
 		$res2 = array();
 		foreach($res as $key => $val){
@@ -211,8 +211,8 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 
 		$this->assertTrue($res, "Update failed.");
 		
-		// Find by lastInsertID
-		$res = self::$colors->find(self::$colors->id);
+		// Test update
+		$res = self::$colors->find(3);
 		
 		$res2 = array();
 		foreach($res as $key => $val){
