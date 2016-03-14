@@ -17,10 +17,10 @@ class Colors extends CDatabaseModel
 	public function init()
 	{
 		
-		$this->db->dropTableIfExists("test");
+		$this->db->dropTableIfExists("colors");
 		$this->db->execute();
 		$this->db->createTable(
-			'test',
+			'colors',
 			[
 				'id'    => ['integer', 'auto_increment', 'primary key', 'not null'],
 				'name'  => ['varchar(20)'],
