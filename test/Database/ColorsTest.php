@@ -50,12 +50,12 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	{
 		$resA = self::$colors->find(1);	
 		
-		
-		foreach($resA as $keyr=>$valr){
-			$resB[$keyr] = $valr;
+		$res2 = array();
+		foreach($res as $key => $val){
+			$res2[$key] = $val;
 		}
 		
-		$res = $resB['name'];
+		$res = $res2['name'];
 		$exp =  'Sofia';
 		
 		$this->assertEquals($res, $exp, "Array result not as expected");
@@ -111,13 +111,18 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return array with object properties.
 	 */
-	public function getProperties()
+	public function testGetProperties()
 	{
-		$properties = get_object_vars($this);
-		unset($properties['di']);
-		unset($properties['db']);
-	 
-		return $properties;
+		$array = array('id' => 1, 'number' => 3, 'name' => 'test');
+		
+		self::$colors->setProperties($array);
+		$res = self::$colors->getProperties();
+		
+		unset($array['id']);
+		$exp = $array;
+		
+		
+		$this->assertEquals($res, $exp, "Array missmatch.");
 	}
 	
 	/**
@@ -127,14 +132,14 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return void
 	 */
-	public function setProperties($properties)
+	public function testSetProperties($properties)
 	{
-		// Update object with incoming values, if any
-		if (!empty($properties)) {
-			foreach ($properties as $key => $val) {
-				$this->$key = $val;
-			}
-		}
+		$array = array('id' => 2, 'number' => 5, 'name' => 'test');
+		self::$colors->setProperties($array);
+		$res = self::$colors->id;
+		$exp = 2;
+		
+		$this->assertEquals($res, $exp, "Id missmatch.");
 	}
 	
 	/**
