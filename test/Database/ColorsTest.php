@@ -285,7 +285,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		
 		$res2 = '';
 		foreach($res as $key => $val){
-			$res2 = $val['id'];
+			$res2 = $val->id;
 		}
 		
 		$exp =  '1';
