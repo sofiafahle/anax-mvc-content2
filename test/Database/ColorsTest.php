@@ -5,6 +5,8 @@ namespace Anax\Database;
 /**
  * Tests for base class for database models
  *
+ * @property $db Database connection
+ *
  */
 class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInjectionAware
 {
@@ -148,16 +150,19 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return boolean true or false if saving went okey.
 	 */
-	public function save($values = [])
+	public function testSave()
 	{
-		$this->setProperties($values);
-		$values = $this->getProperties();
-	 
-		if (isset($values['id'])) {
-			return $this->update($values);
-		} else {
-			return $this->create($values);
-		}
+		// Update
+		$array = array('id' => 3, 'name' => 'Pia', 'color' => 'Green');
+		$res = self::$colors->save($array);
+		
+		$this->assertTrue($res, "Save/create failed.");
+		
+		// Create
+		$array = array('name' => 'Pia', 'color' => 'Green');
+		$res = self::$colors->save($array);
+		
+		$this->assertTrue($res, "Save/update failed.");
 	}
 	
 	
@@ -168,21 +173,26 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return boolean true or false if saving went okey.
 	 */
-	public function create($values)
+	public function testCreate()
 	{
-		$keys   = array_keys($values);
-		$values = array_values($values);
+		$array = array('name' => 'Anders', 'color' => 'Black');
+		$res = self::$colors->create($array);
 	 
-		$this->db->insert(
-			$this->getSource(),
-			$keys
-		);
-	 
-		$res = $this->db->execute($values);
-	 
-		$this->id = $this->db->lastInsertId();
-	 
-		return $res;
+		$this->assertTrue($res, "Create failed.");
+		
+		// Find by lastInsertID
+		$res = self::$colors->find(self::$colors->id);
+		
+		$res2 = array();
+		foreach($res as $key => $val){
+			$res2[$key] = $val;
+		}
+		
+		$res = $res2['name'];
+		$exp =  'Anders';
+		
+		
+		$this->assersEqual($res, $exp, "Name missmatch after create.")
 	}
 	
 	/**
@@ -192,24 +202,28 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return boolean true or false if saving went okey.
 	 */
-	public function update($values)
+	public function testUpdate()
 	{
-		// Its update, remove id
-		unset($values['id']);
+		self::$colors->id = 3;
 		
-		$keys   = array_keys($values);
-		$values = array_values($values);
+		$array = array('id' => 3, 'name' => 'Pia', 'color' => 'Pink');
+		$res = self::$colors->update($array);
 	 
-		// Use id as where-clause
-		$values[] = $this->id;
-	 
-		$this->db->update(
-			$this->getSource(),
-			$keys,
-			"id = ?"
-		);
-	 
-		return $this->db->execute($values);
+		$this->assertTrue($res, "Update failed.");
+		
+		// Find by lastInsertID
+		$res = self::$colors->find(self::$colors->id);
+		
+		$res2 = array();
+		foreach($res as $key => $val){
+			$res2[$key] = $val;
+		}
+		
+		$res = $res2['color'];
+		$exp =  'Pink';
+		
+		
+		$this->assersEqual($res, $exp, "Color missmatch after update.")
 	}
 	
 	/**
