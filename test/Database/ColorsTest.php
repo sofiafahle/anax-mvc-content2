@@ -284,13 +284,13 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		
 		foreach($res as $key => $val){
 			foreach ($val as $k => $v) {
-				$res = $v['id'];
+				$res2 = $v['id'];
 			}
 		}
 		
 		$exp =  '1';
 		
-		$this->assertEquals($exp, $res, "ID missmatch.");
+		$this->assertEquals($exp, $res2, "ID missmatch.");
 	}
 	
 	/**
