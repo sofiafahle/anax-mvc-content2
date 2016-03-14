@@ -284,7 +284,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		
 		$exp =  '1';
 		
-		$this->assertEquals($res, $exp, "ID missmatch.");
+		$this->assertEquals($exp, $res, "ID missmatch.");
 	}
 	
 	/**
