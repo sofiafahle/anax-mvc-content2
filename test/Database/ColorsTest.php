@@ -192,7 +192,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Anders';
 		
 		
-		$this->assersEqual($res, $exp, "Name missmatch after create.");
+		$this->assertEqual($res, $exp, "Name missmatch after create.");
 	}
 	
 	/**
@@ -223,7 +223,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Pink';
 		
 		
-		$this->assersEqual($res, $exp, "Color missmatch after update.");
+		$this->assertEqual($res, $exp, "Color missmatch after update.");
 	}
 	
 	/**
@@ -233,14 +233,11 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return boolean true or false if deleting went okey.
 	 */
-	public function delete($id)
+	public function testDelete()
 	{
-		$this->db->delete(
-			$this->getSource(),
-			'id = ?'
-		);
+		$res = self::$colors->delete(4);
 	 
-		return $this->db->execute([$id]);
+		$this->assertTrue($res, "Delete failed.");
 	}
 	
 	/**
@@ -251,14 +248,11 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return boolean true or false if deleting went okey.
 	 */
-	public function deleteWhere($column, $value)
+	public function testDeleteWhere()
 	{
-		$this->db->delete(
-			$this->getSource(),
-			$column . ' = ?'
-		);
+		$res = self::$colors->deleteWhere('color', 'Pink');
 	 
-		return $this->db->execute([$value]);
+		$this->assertTrue($res, "Delete failed.");
 	}
 	
 	/**
@@ -266,13 +260,11 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return boolean true or false if deleting went okey.
 	 */
-	public function deleteAll()
+	public function testDeleteAll()
 	{
-		$this->db->delete(
-			$this->getSource()
-		);
+		$res = self::$colors->deleteAll();
 	 
-		return $this->db->execute();
+		$this->assertTrue($res, "Delete failed.");
 	}
 	
 	
@@ -283,12 +275,19 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 *
 	 * @return $this
 	 */
-	public function query($columns = '*')
+	public function testQuery()
 	{
-		$this->db->select($columns)
-				 ->from($this->getSource());
-	 
-		return $this;
+		$res = self::$colors->query('id');
+		
+	 	$res2 = array();
+		foreach($res as $key => $val){
+			$res2[$val] = $val[0];
+		}
+		
+		$res = $res2['id'];
+		$exp =  '1';
+		
+		$this->assertEqual($res, $exp, "ID missmatch.");
 	}
 	
 	/**
@@ -340,12 +339,12 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 * @param string $str the string to format as slug.
 	 * @returns str the formatted slug. 
 	 */
-	function slugify($str) {
-		$str = mb_strtolower(trim($str));
-		$str = str_replace(array('å','ä','ö'), array('a','a','o'), $str);
-		$str = preg_replace('/[^a-z0-9-]/', '-', $str);
-		$str = trim(preg_replace('/-+/', '-', $str), '-');
-		return $str;
+	function testSlugify() 
+	{
+		$res = self::$colors->slugify('Red is nice');
+		$exp = 'red-is-nice';
+		
+		$this->assertEqual($res, $exp, "Slug missmatch.");
 	}
  
 }
