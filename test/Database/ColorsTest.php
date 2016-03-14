@@ -192,7 +192,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Anders';
 		
 		
-		$this->assertEqual($res, $exp, "Name missmatch after create.");
+		$this->assertEquals($res, $exp, "Name missmatch after create.");
 	}
 	
 	/**
@@ -223,7 +223,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Pink';
 		
 		
-		$this->assertEqual($res, $exp, "Color missmatch after update.");
+		$this->assertEquals($res, $exp, "Color missmatch after update.");
 	}
 	
 	/**
@@ -290,7 +290,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = $res2['id'];
 		$exp =  '1';
 		
-		$this->assertEqual($res, $exp, "ID missmatch.");
+		$this->assertEquals($res, $exp, "ID missmatch.");
 	}
 	
 	/**
@@ -347,7 +347,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = self::$colors->slugify('Red is nice');
 		$exp = 'red-is-nice';
 		
-		$this->assertEqual($res, $exp, "Slug missmatch.");
+		$this->assertEquals($res, $exp, "Slug missmatch.");
 	}
  
 }
