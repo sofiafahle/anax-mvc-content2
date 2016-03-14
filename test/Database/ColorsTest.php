@@ -192,7 +192,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Anders';
 		
 		
-		$this->assersEqual($res, $exp, "Name missmatch after create.")
+		$this->assersEqual($res, $exp, "Name missmatch after create.");
 	}
 	
 	/**
@@ -223,7 +223,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Pink';
 		
 		
-		$this->assersEqual($res, $exp, "Color missmatch after update.")
+		$this->assersEqual($res, $exp, "Color missmatch after update.");
 	}
 	
 	/**
