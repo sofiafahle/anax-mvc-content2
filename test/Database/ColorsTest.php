@@ -27,7 +27,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		
 		$di->setShared('db', function() {
 			$db = new \Mos\Database\CDatabaseBasic();
-            $db->setOptions(['dsn' => "sqlite:memory::", 'debug_connect' => true, 'verbose' => false]);
+            $db->setOptions(['dsn' => "sqlite::memory:", 'debug_connect' => true, 'verbose' => false]);
             $db->connect();
             return $db;
 		});
