@@ -54,7 +54,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp = 'Sofia';
 	 
 	 
-		$this->assertTrue($res, $exp, "Name missmatch.");
+		$this->assertEqual($res, $exp, "Name missmatch.");
 	}
 	
 	
@@ -69,7 +69,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = count($res);
 		$exp = 3;
 		
-		$this->assertEquals($res, $exp, "Row count missmatch.");
+		$this->assertEquals($res, $exp, "Row count missmatch." . count($res));
 	}
 	
 	/**
