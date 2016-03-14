@@ -100,7 +100,6 @@ class CFormUpdatePost extends \Mos\HTMLForm\CForm
 			'updated'	=> $now,
 		]);
 		
-        $this->saveInSession = true;
         return true;
     }
 

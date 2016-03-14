@@ -5,6 +5,7 @@ namespace Anax\Database;
 /**
  * Base class for database models
  *
+ * @property $db Database connection.
  */
 class CDatabaseModel implements \Anax\DI\IInjectionAware
 {

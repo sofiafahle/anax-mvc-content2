@@ -5,7 +5,7 @@ namespace Anax\Database;
 /**
  * Class with table for testing CDatabaseModel
  *
- *	@property $db Database connection
+ * @property $db Database connection
  *
  */
 class Colors extends CDatabaseModel

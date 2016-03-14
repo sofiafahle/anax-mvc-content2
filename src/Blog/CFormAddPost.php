@@ -85,7 +85,6 @@ class CFormAddPost extends \Mos\HTMLForm\CForm
 			'created'	=> $now,
 		]);
 		
-        $this->saveInSession = true;
         return true;
     }
 
