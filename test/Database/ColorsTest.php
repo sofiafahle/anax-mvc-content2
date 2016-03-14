@@ -44,7 +44,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = self::$colors->getSource();
 		$exp = "colors";
 		
-		$this->assertEquals($res, $exp, "Table name missmatch.");
+		$this->assertEquals($exp, $res, "Table name missmatch.");
     }
 	
 
@@ -60,7 +60,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = $res2['name'];
 		$exp =  'Sofia';
 		
-		$this->assertEquals($res, $exp, "Array result not as expected");
+		$this->assertEquals($exp, $res, "Array result not as expected");
 	}
 	
 	
@@ -75,7 +75,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = count($res);
 		$exp = 3;
 		
-		$this->assertEquals($res, $exp, "Row count missmatch.");
+		$this->assertEquals($exp, $res, "Row count missmatch.");
 	}
 	
 	/**
@@ -123,7 +123,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp = $array;
 		
 		
-		$this->assertEquals($res, $exp, "Array missmatch.");
+		$this->assertEquals($exp, $res, "Array missmatch.");
 	}
 	
 	/**
@@ -140,7 +140,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = self::$colors->name;
 		$exp = 'Olle';
 		
-		$this->assertEquals($res, $exp, "Name missmatch.");
+		$this->assertEquals($exp, $res, "Name missmatch.");
 	}
 	
 	/**
@@ -192,7 +192,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Anders';
 		
 		
-		$this->assertEquals($res, $exp, "Name missmatch after create.");
+		$this->assertEquals($exp, $res, "Name missmatch after create.");
 	}
 	
 	/**
@@ -223,7 +223,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$exp =  'Pink';
 		
 		
-		$this->assertEquals($res, $exp, "Color missmatch after update.");
+		$this->assertEquals($exp, $res, "Color missmatch after update.");
 	}
 	
 	/**
@@ -283,8 +283,8 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 					 ->execute();
 		
 		foreach($res as $key => $val){
-			foreach ($val as $key => $val) {
-				$res = $val['id'];
+			foreach ($val as $k => $v) {
+				$res = $v['id'];
 			}
 		}
 		
@@ -347,7 +347,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		$res = self::$colors->slugify('Red is nice');
 		$exp = 'red-is-nice';
 		
-		$this->assertEquals($res, $exp, "Slug missmatch.");
+		$this->assertEquals($exp, $res, "Slug missmatch.");
 	}
  
 }
