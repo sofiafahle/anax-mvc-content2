@@ -48,16 +48,17 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 
 	public function testFind()
 	{
-		// Id = 1
-		$res = self::$colors->find(1);
-	 	foreach($res as $key => $value){
-			$res[$key] = $value;
+		$resA = self::$colors->find(1);	
+		
+		
+		foreach($resA as $keyr=>$valr){
+			$resB[$keyr] = $valr;
 		}
-		$res = $res['name'];
-		$exp = 'Sofia';
-	 
-	 
-		$this->assertEqual($res, $exp, "Name missmatch.");
+		
+		$res = $resB['name'];
+		$exp =  'Sofia';
+		
+		$this->assertEquals($res, $exp, "Array result not as expected");
 	}
 	
 	
