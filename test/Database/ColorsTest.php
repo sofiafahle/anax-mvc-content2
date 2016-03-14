@@ -25,9 +25,9 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 		
 		$di->setShared('db', function() {
 			$db = new \Mos\Database\CDatabaseBasic();
-			$db->setOptions(['dsn' => "sqlite:memory::", "verbose" => false]);
-			$db->connect();
-			return $db;
+            $db->setOptions(['dsn' => "sqlite:memory::", 'debug_connect' => true, 'verbose' => false]);
+            $db->connect();
+            return $db;
 		});
 		
 		self::$colors = new Colors();
@@ -46,13 +46,13 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
     }
 	
 
-	/*public function testFind()
+	public function testFind()
 	{
 		// Id = 1
 		$res = self::$colors->find(1);
 	 
-		return $this->db->fetchInto($this);
-	}*/
+		
+	}
 	
 	
 	/**
