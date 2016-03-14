@@ -113,7 +113,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 */
 	public function testGetProperties()
 	{
-		$array = array('id' => 1, 'number' => 3, 'name' => 'test');
+		$array = array('id' => 1, 'name' => 'Sofia', 'color' => 'Red');
 		
 		self::$colors->setProperties($array);
 		$res = self::$colors->getProperties();
@@ -134,12 +134,12 @@ class ColorsTest extends \PHPUnit_Framework_TestCase implements \Anax\DI\IInject
 	 */
 	public function testSetProperties()
 	{
-		$array = array('id' => 2, 'number' => 5, 'name' => 'test');
+		$array = array('id' => 2, 'name' => 'Olle', 'color' => 'Blue');
 		self::$colors->setProperties($array);
-		$res = self::$colors->id;
-		$exp = 2;
+		$res = self::$colors->name;
+		$exp = 'Olle';
 		
-		$this->assertEquals($res, $exp, "Id missmatch.");
+		$this->assertEquals($res, $exp, "Name missmatch.");
 	}
 	
 	/**
