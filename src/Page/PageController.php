@@ -10,6 +10,8 @@ class PageController implements \Anax\DI\IInjectionAware
 {
     use \Anax\DI\TInjectable,
         \Anax\MVC\TRedirectHelpers;
+		
+	public $page;
 	
 	/**
 	 * Initialize the controller.

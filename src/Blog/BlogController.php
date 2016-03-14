@@ -11,6 +11,8 @@ class BlogController implements \Anax\DI\IInjectionAware
     use \Anax\DI\TInjectable,
         \Anax\MVC\TRedirectHelpers;
 	
+	public $blog;
+	
 	/**
 	 * Initialize the controller.
 	 *

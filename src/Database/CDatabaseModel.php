@@ -11,6 +11,8 @@ class CDatabaseModel implements \Anax\DI\IInjectionAware
 {
     use \Anax\DI\TInjectable;
 	
+	public $id;
+	
 	
 	/**
 	 * Get the table name.
@@ -305,7 +307,7 @@ class CDatabaseModel implements \Anax\DI\IInjectionAware
 	 * @param string $str the string to format as slug.
 	 * @returns str the formatted slug. 
 	 */
-	function slugify($str) {
+	public function slugify($str) {
 		$str = mb_strtolower(trim($str));
 		$str = str_replace(array('å','ä','ö'), array('a','a','o'), $str);
 		$str = preg_replace('/[^a-z0-9-]/', '-', $str);
